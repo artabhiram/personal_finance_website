@@ -18,16 +18,18 @@ router.get('/getAllByUserId/:userId',async (req,res)=>{
 })
 
 router.post("/",async (req,res)=>{
-    const {newRecord}=req.body;
+    const record=req.body;
+    console.log(req.body);
 
     try {
-        const result=new financialRecord(newRecord);
+        const result=new financialRecord(record);
         const savedResult=await result.save();    
 
         if(savedResult){
             res.status(200).send(savedResult);
         }
     } catch (error) {
+        console.log(error)
         res.status(500).send(error); 
     }
 })
@@ -57,4 +59,4 @@ router.delete("/:id",async (req,res)=>{
         res.status(500).send(err);
     }
 })
-export default router;
+module.exports=router;
