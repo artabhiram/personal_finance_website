@@ -6,9 +6,9 @@ export const FinancialRecordForm = () => {
     const [description, setDescription] = useState("");
     const [amount, setAmount] = useState("");
     const [paymentMethod, setPaymentMethod] = useState("");
-    const [category, setCategory] = useState(""); // Moved inside the component
+    const [category, setCategory] = useState("");
 
-    const { records, addRecord } = useFinancialRecords();
+    const { addRecord } = useFinancialRecords();
     const { user } = useUser();
 
     const handleSubmit = (event) => {
@@ -17,15 +17,14 @@ export const FinancialRecordForm = () => {
         const newRecord = {
             userId: user?.id,
             date: new Date(),
-            description: description,  // Directly assign description
+            description,
             amount: parseFloat(amount),
-            category: category,
-            paymentMethod: paymentMethod
+            category,
+            paymentMethod
         };
 
         addRecord(newRecord);
 
-        // Reset the form
         setDescription("");
         setAmount("");
         setCategory("");
@@ -33,33 +32,36 @@ export const FinancialRecordForm = () => {
     };
 
     return (
-        <div className="form-container">
-            <form onSubmit={handleSubmit}>
-                <div className="form-field">
-                    <label>Description:</label>
+        <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+            <form 
+                onSubmit={handleSubmit} 
+                className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4"
+            >
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Description:</label>
                     <input
-                        type='text'
+                        type="text"
                         required
-                        className="input"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </div>
-                <div className="form-field">
-                    <label>Amount:</label>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Amount:</label>
                     <input
-                        type='number'
+                        type="number"
                         required
-                        className="input"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                     />
                 </div>
-                <div className="form-field">
-                    <label>Category:</label>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Category:</label>
                     <select
                         required
-                        className="input"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
                     >
@@ -72,11 +74,11 @@ export const FinancialRecordForm = () => {
                         <option value="Other">Other</option>
                     </select>
                 </div>
-                <div className="form-field">
-                    <label>Payment Method:</label>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Payment Method:</label>
                     <select
                         required
-                        className="input"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         value={paymentMethod}
                         onChange={(e) => setPaymentMethod(e.target.value)}
                     >
@@ -86,7 +88,12 @@ export const FinancialRecordForm = () => {
                         <option value="cash">Cash</option>
                     </select>
                 </div>
-                <button type="submit" className="submit">Add Record</button>
+                <button
+                    type="submit"
+                    className="w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition ease-in-out duration-300"
+                >
+                    Add Record
+                </button>
             </form>
         </div>
     );

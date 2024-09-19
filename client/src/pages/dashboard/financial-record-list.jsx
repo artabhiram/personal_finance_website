@@ -15,7 +15,7 @@ const EditableCell = ({ value: initialValue, row, column, updateRecord, editable
   return (
     <div
       onClick={() => editable && setIsEditing(true)}
-      style={{ cursor: editable ? "pointer" : "default" }}
+      className={`px-2 py-1 ${editable ? "cursor-pointer" : ""}`}
     >
       {isEditing ? (
         <input
@@ -23,7 +23,7 @@ const EditableCell = ({ value: initialValue, row, column, updateRecord, editable
           onChange={(e) => setValue(e.target.value)}
           autoFocus
           onBlur={onBlur}
-          style={{ width: "100%" }}
+          className="w-full px-2 py-1 border border-gray-300 rounded"
         />
       ) : typeof value === "string" ? (
         value
@@ -105,7 +105,7 @@ const FinancialRecordList = () => {
       Cell: ({ row }) => (
         <button
           onClick={() => deleteRecord(row.original._id ?? "")}
-          className="button"
+          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition"
         >
           Delete
         </button>
@@ -119,30 +119,42 @@ const FinancialRecordList = () => {
   });
 
   return (
-    <div className="table-container">
-      <table {...getTableProps()} className="table">
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}> {column.render("Header")}</th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => (
-                  <td {...cell.getCellProps()}> {cell.render("Cell")} </td>
+    <div className="container mx-auto p-4">
+      <div className="overflow-x-auto">
+        <table {...getTableProps()} className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+          <thead className="bg-gray-200">
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()} className="text-left">
+                {headerGroup.headers.map((column) => (
+                  <th
+                    {...column.getHeaderProps()}
+                    className="px-4 py-2 text-gray-600 font-semibold"
+                  >
+                    {column.render("Header")}
+                  </th>
                 ))}
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {rows.map((row) => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps()} className="border-b last:border-none">
+                  {row.cells.map((cell) => (
+                    <td
+                      {...cell.getCellProps()}
+                      className="px-4 py-2 text-gray-800"
+                    >
+                      {cell.render("Cell")}
+                    </td>
+                  ))}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
