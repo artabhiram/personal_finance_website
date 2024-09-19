@@ -1,6 +1,3 @@
-Here's the complete README.md file for your Personal Finance Tracker project:
-
-markdown
 
 # Personal Finance Tracker
 
