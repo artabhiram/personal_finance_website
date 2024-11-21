@@ -1,20 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const financialRecordRoute=require('./routes/financial-records')
-const cors=require('cors');
-
-
+const financialRecordRoute = require('./routes/financial-records');
+const cors = require('cors');
 
 dotenv.config();
 
 const app = express();
 
 app.use(cors());
+app.use(express.json());
 
-app.use(express.json())
-
-app.use('/financial-records',financialRecordRoute)
+app.use('/financial-records', financialRecordRoute);
 
 app.get('/', (req, res) => {
     res.send('Welcome to the Backend');
@@ -22,7 +19,7 @@ app.get('/', (req, res) => {
 
 async function main() {
     try {
-        await mongoose.connect(process.env.MONGODB_URL, {
+        await mongoose.connect(process.env.MONGODB_URI, {  
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
@@ -33,8 +30,6 @@ async function main() {
 }
 
 main();
-
-
 
 app.listen(3000, () => {
     console.log("Server is running on port 3000");

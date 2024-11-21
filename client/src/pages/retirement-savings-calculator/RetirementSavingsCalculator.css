@@ -1,0 +1,47 @@
+.retirement-savings-calculator {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.retirement-savings-calculator h2 {
+  text-align: center;
+}
+
+.retirement-savings-calculator form div {
+  margin-bottom: 15px;
+}
+
+.retirement-savings-calculator label {
+  display: block;
+  font-weight: bold;
+}
+
+.retirement-savings-calculator input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.retirement-savings-calculator .actions button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.retirement-savings-calculator .actions button:hover {
+  background-color: #0056b3;
+}
+
+.retirement-savings-calculator .retirement-result {
+  margin-top: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+}

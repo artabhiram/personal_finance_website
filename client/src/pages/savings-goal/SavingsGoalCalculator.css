@@ -1,0 +1,53 @@
+.savings-goal-calculator {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.savings-goal-calculator h2 {
+  text-align: center;
+}
+
+.savings-goal-calculator form div {
+  margin-bottom: 15px;
+}
+
+.savings-goal-calculator label {
+  display: block;
+  font-weight: bold;
+}
+
+.savings-goal-calculator input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.savings-goal-calculator .actions {
+  display: flex; /* Flexbox to align buttons properly */
+  justify-content: center; /* Center buttons horizontally */
+  gap: 10px; /* Add space between the buttons */
+  margin-top: 15px; /* Add space above the button group */
+}
+
+.savings-goal-calculator .actions button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.savings-goal-calculator .actions button:hover {
+  background-color: #0056b3;
+}
+
+.savings-goal-calculator .results {
+  margin-top: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+}

@@ -67,7 +67,7 @@ export const Dashboard = () => {
             <div className="w-full max-w-4xl bg-white rounded-lg shadow-md p-6 mb-6">
                 <h2 className="text-xl font-semibold mb-4">Total Monthly Expenses:</h2>
                 <div className="text-3xl font-bold text-blue-600">
-                    ${totalAmount.toFixed(2)}
+                    ₹{totalAmount.toFixed(2)}
                 </div>
             </div>
             <div className="w-full max-w-4xl bg-white rounded-lg shadow-md p-6">

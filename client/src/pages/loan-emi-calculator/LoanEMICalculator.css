@@ -1,0 +1,46 @@
+.loan-emi-calculator {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.loan-emi-calculator h2 {
+  text-align: center;
+}
+
+.loan-emi-calculator form div {
+  margin-bottom: 15px;
+}
+
+.loan-emi-calculator label {
+  display: block;
+  font-weight: bold;
+}
+
+.loan-emi-calculator input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.loan-emi-calculator .actions button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.loan-emi-calculator .actions button:hover {
+  background-color: #0056b3;
+}
+
+.loan-emi-calculator .results {
+  margin-top: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
