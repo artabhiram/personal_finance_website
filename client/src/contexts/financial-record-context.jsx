@@ -7,9 +7,12 @@ export const FinancialRecordsProvider = ({ children }) => {
     const [records, setRecords] = useState([]);
     const { user } = useUser();
 
+    // Use the environment variable for the backend API URL
+    const apiUrl = "https://finance-website-wu7q.onrender.com" || "http://localhost:3000"; // Fallback to localhost in development
+
     const fetchRecords = async () => {
         if (!user) return;
-        const response = await fetch(`http://localhost:3000/financial-records/getAllByUserID/${user.id}`);
+        const response = await fetch(`${apiUrl}/financial-records/getAllByUserID/${user.id}`);
 
         if (response.ok) {
             const records = await response.json();
@@ -24,7 +27,7 @@ export const FinancialRecordsProvider = ({ children }) => {
 
     const addRecord = async (record) => {
         try {
-            const response = await fetch("http://localhost:3000/financial-records/", {
+            const response = await fetch(`${apiUrl}/financial-records/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -46,7 +49,7 @@ export const FinancialRecordsProvider = ({ children }) => {
 
     const updateRecord = async (id, updatedRecord) => {
         try {
-            const response = await fetch(`http://localhost:3000/financial-records/${id}`, {
+            const response = await fetch(`${apiUrl}/financial-records/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -70,7 +73,7 @@ export const FinancialRecordsProvider = ({ children }) => {
 
     const deleteRecord = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3000/financial-records/${id}`, {
+            const response = await fetch(`${apiUrl}/financial-records/${id}`, {
                 method: "DELETE",
             });
 
